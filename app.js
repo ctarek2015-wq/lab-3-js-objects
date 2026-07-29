@@ -397,7 +397,6 @@ game.catchPokemon = function (pokemonObj) {
     console.log("there are not enough pokeballs to catch the desired Pokemon");
   }
 };
-game.catchPokemon("sdvsdv");
 /*
 Exercise 21
 Dynamically construct an object with the existing `pokemon` data sorted by the different pokemon types. The object will have this structure:
@@ -423,3 +422,66 @@ Log the object when it's constructed.
 
 Solve Exercise 21 here:
 */
+let sortedPokemon = {
+  grass: [],
+  fire: [],
+  water: [],
+  poison: [],
+  fighting: [],
+  bug: [],
+  ground: [],
+  normal: [],
+  psychic: [],
+  electric: [],
+  fairy: [],
+  rock: [],
+  ghost: [],
+  ice: [],
+  dragon: [],
+};
+pokemon.filter(function (poke) {
+  if (poke.type === "grass") return sortedPokemon.grass.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "fire") return sortedPokemon.fire.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "water") return sortedPokemon.water.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "poison") return sortedPokemon.poison.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "fighting") return sortedPokemon.fighting.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "bug") return sortedPokemon.bug.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "ground") return sortedPokemon.ground.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "normal") return sortedPokemon.normal.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "psychic") return sortedPokemon.psychic.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "electric") return sortedPokemon.electric.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "fairy") return sortedPokemon.fairy.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "rock") return sortedPokemon.rock.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "ghost") return sortedPokemon.ghost.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "ice") return sortedPokemon.ice.push(poke);
+});
+pokemon.filter(function (poke) {
+  if (poke.type === "dragon") return sortedPokemon.dragon.push(poke);
+});
+console.log(sortedPokemon);
