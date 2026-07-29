@@ -304,6 +304,15 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 
 Solve Exercise 18 here:
 */
+game.collection = [];
+game.catchPokemon = function (pokemonObj) {
+  if (game.party.length < 6) {
+    game.party.push(pokemonObj);
+  }
+  game.collection.push(pokemonObj);
+};
+game.catchPokemon(pokemon.at(50));
+console.log(game);
 
 /*
 Exercise 19
@@ -315,7 +324,14 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 
 Solve Exercise 19 here:
 */
-
+// for (poke of game.party)
+//   game.catchPokemon = function (pokemonObj) {
+//     if (pokemonObj.name === game)
+//       if (game.party.length < 6) {
+//         game.party.push(pokemonObj);
+//       }
+//     game.collection.push(pokemonObj);
+//   };
 /*
 Exercise 20
 Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify is so that you can just pass in the name of a Pokemon instead of an entire object, and the method will look up the Pokemon from the data set for you.
