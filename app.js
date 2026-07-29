@@ -308,8 +308,9 @@ game.collection = [];
 game.catchPokemon = function (pokemonObj) {
   if (game.party.length < 6) {
     game.party.push(pokemonObj);
+  } else {
+    game.collection.push(pokemonObj);
   }
-  game.collection.push(pokemonObj);
 };
 game.catchPokemon(pokemon.at(50));
 console.log(game);
@@ -324,17 +325,33 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 
 Solve Exercise 19 here:
 */
-// for (poke of game.party)
-//   game.catchPokemon = function (pokemonObj) {
-//     if (pokemonObj.name === game)
-//       if (game.party.length < 6) {
-//         game.party.push(pokemonObj);
-//       }
-//     game.collection.push(pokemonObj);
-//   };
+game.catchPokemon = function (pokemonObj) {
+  for (poke of game.party) {
+    if (poke.name === pokemonObj.name) {
+      console.log("the pokemon already exists in the party");
+      return;
+    }
+  }
+  for (poke2 of game.collection) {
+    if (poke2.name === pokemonObj.name) {
+      console.log("the pokemon already exists in the collection");
+      return;
+    }
+  }
+  if (game.items[1].quantity > 0) {
+    if (game.party.length < 6) {
+      game.party.push(pokemonObj);
+    } else {
+      game.collection.push(pokemonObj);
+    }
+  } else {
+    console.log("there are not enough pokeballs to catch the desired Pokemon");
+  }
+};
+
 /*
 Exercise 20
-Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify is so that you can just pass in the name of a Pokemon instead of an entire object, and the method will look up the Pokemon from the data set for you.
+Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify it so that you can just pass in the name of a Pokemon instead of an entire object, and the method will look up the Pokemon from the data set for you.
 
 The string passed in should be allowed to be any case (for example, if the string 'PiKacHU' is passed to the function, it should match to 'Pikachu' in the data set). 
 
@@ -342,7 +359,45 @@ If there is not a match, then return a string noting that the selected Pokemon d
 
 Solve Exercise 20 here:
 */
+game.catchPokemon = function (pokemonObj) {
+  const findPoke =
+    pokemonObj.charAt(0).toUpperCase() + pokemonObj.slice(1).toLowerCase();
 
+  for (poke of game.party) {
+    if (poke.name === findPoke) {
+      console.log("the pokemon already exists in the party");
+      return;
+    }
+  }
+  for (poke2 of game.collection) {
+    if (poke2.name === findPoke) {
+      console.log("the pokemon already exists in the collection");
+      return;
+    }
+  }
+  if (game.items[1].quantity > 0) {
+    if (game.party.length < 6) {
+      for (mon of pokemon) {
+        if (mon === findPoke) {
+          game.party.push(mon);
+        } else {
+          console.log("the selected Pokemon does not exist");
+        }
+      }
+    } else {
+      for (mon of pokemon) {
+        if (mon === findPoke) {
+          game.collection.push(mon);
+        } else {
+          console.log("the selected Pokemon does not exist");
+        }
+      }
+    }
+  } else {
+    console.log("there are not enough pokeballs to catch the desired Pokemon");
+  }
+};
+game.catchPokemon("sdvsdv");
 /*
 Exercise 21
 Dynamically construct an object with the existing `pokemon` data sorted by the different pokemon types. The object will have this structure:
